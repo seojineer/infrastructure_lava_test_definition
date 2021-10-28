@@ -1,7 +1,7 @@
 metadata:
     format: Lava-Test Test Definition 1.0
-    name: kernel-hw-random-generation-test
-    description: "Kernel HW Random Generation Test."
+    name: kernel-spi-test
+    description: "Kernel Verifying Master Mode Transfer over SPI Test."
     maintainer:
         - seoji@coasia.com
     os:
@@ -25,8 +25,13 @@ metadata:
         - d05
         - mib3oi-gp
 
+params:
+    SPI_ADDR: "10980000" # spi8
+    SPI_DEV: "spidev8.0" # /dev/spidev8.0
+
+
 run:
     steps:
-        - cd ./automated/linux/rpmb/
-        - ./rpmb-key-blocking.sh
+        - cd ./automated/linux/spi/
+        - ./spi.sh -a "${SPI_ADDR}" -d "${SPI_DEV}"
         - ../../utils/send-to-lava.sh ./output/result.txt
