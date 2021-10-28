@@ -1,0 +1,12 @@
+[   38.424307] exynos_pd_dbg dbgdev-pd-aud: Runtime_Resume
+[   38.424491] exynos_pd_dbg dbgdev-pd-mfc: Runtime_Resume
+[   38.424977] exynos_pd_dbg dbgdev-pd-npu00: Runtime_Resume
+[   38.425280] exynos_pd_dbg dbgdev-pd-taa0: Runtime_Resume
+[   38.425335] exynos_pd_dbg dbgdev-pd-g3d00: Runtime_Resume
+[   38.425486] exynos_pd_dbg dbgdev-pd-dpus0: Runtime_Resume
+[   38.425566] exynos_pd_dbg dbgdev-pd-aud: Runtime_Suspend
+[   38.425609] exynos_pd_dbg dbgdev-pd-mfc: Runtime_Suspend
+[   38.425750] exynos_pd_dbg dbgdev-pd-npu00: Runtime_Suspend
+[   38.426136] exynos_pd_dbg dbgdev-pd-taa0: Runtime_Suspend
+[   38.429378] exynos_pd_dbg dbgdev-pd-g3d00: Runtime_Suspend
+[   38.429429] exynos_pd_dbg dbgdev-pd-dpus0: Runtime_Suspend

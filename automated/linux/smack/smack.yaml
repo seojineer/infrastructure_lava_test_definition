@@ -1,0 +1,22 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: kernel-verify-smack-policy-enabled-test
+    description: "Kernel Verifying Smack Policy Enabled Test."
+    maintainer:
+        - seoji@coasia.com
+    os:
+        - debian
+        - ubuntu
+        - centos
+        - fedora
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - mib3oi-gp
+
+run:
+    steps:
+        - cd ./automated/linux/smack/
+        - ./smack.sh
+        - ../../utils/send-to-lava.sh ./output/result.txt

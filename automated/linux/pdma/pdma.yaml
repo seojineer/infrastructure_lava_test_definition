@@ -1,0 +1,25 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: kernel-pdma-test
+    description: "Kernel PDMA Test."
+    maintainer:
+        - seoji@coasia.com
+    os:
+        - debian
+        - ubuntu
+        - centos
+        - fedora
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - mib3oi-gp
+
+#params:
+    #CHANNEL: dma0chan0
+
+run:
+    steps:
+        - cd ./automated/linux/pdma/
+        - ./pdma.sh
+        - ../../utils/send-to-lava.sh ./output/result.txt

@@ -1,0 +1,4 @@
+spi mode: 0x0
+bits per word: 8
+max speed: 25000000 Hz (25000 KHz)
+total: tx 400.0KB, rx 400.0KB

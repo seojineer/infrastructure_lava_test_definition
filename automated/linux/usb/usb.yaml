@@ -1,0 +1,26 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: kernel-usb-test
+    description: "Kernel USB Test."
+    maintainer:
+        - seoji@coasia.com
+    os:
+        - debian
+        - ubuntu
+        - centos
+        - fedora
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - mib3oi-gp
+
+params:
+    MOUSE_DEVICE_NAME: "HP, Inc Optical Mouse"
+    STORAGE_DEVICE_NAME: "SanDisk Corp."
+
+run:
+    steps:
+        - cd ./automated/linux/usb/
+        - ./usb.sh
+        - ../../utils/send-to-lava.sh ./output/result.txt
