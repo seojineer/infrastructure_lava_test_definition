@@ -1,0 +1,25 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: kernel-verifying-interrupt-counter-increasing-test
+    description: "Kernel Verifying Interrupt Counter Increasing Test."
+    maintainer:
+        - seoji@coasia.com
+    os:
+        - debian
+        - ubuntu
+        - centos
+        - fedora
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - mib3oi-gp
+
+#params:
+    #TESTS: "uart arch_timer mct"
+
+run:
+    steps:
+        - cd ./automated/linux/interrupt-controller/
+        - ./interrupt-controller.sh
+        - ../../utils/send-to-lava.sh ./output/result.txt
