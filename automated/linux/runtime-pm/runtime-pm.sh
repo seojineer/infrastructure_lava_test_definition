@@ -34,7 +34,8 @@ test_verify_runtime_pm() {
     done
 
     dmesg | grep exynos_pd_dbg | tee "$LOGFILE"
-    tail -n ${#array[@]} "$LOGFILE" | tee "$LOGFILE"
+    tail -n `expr ${#array[@]} \* 2` "$LOGFILE" | tee "$LOGFILE"
+    #tail -n $((${#array[@]}*2)) "$LOGFILE" | tee "$LOGFILE"
 
     cnt=0
     check_string="Runtime_Resume"
