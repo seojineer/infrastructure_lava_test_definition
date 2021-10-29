@@ -39,8 +39,8 @@ test_usb_host_enabled() {
 
 test_usb_host_mouse() {
     info_msg "Running Checking USB host mouse is Working Test..."
-    #/home/root/host.sh
-    #lsusb | tee -a "$LOGFILE_host_mouse"
+    /home/root/host.sh
+    lsusb | tee -a "$LOGFILE_host_mouse"
 
     if [ -n "$(sed -n "/${MOUSE_DEVICE_NAME}/p" $LOGFILE_host_mouse)" ]; then
         report_pass "verify-usb-host-mouse-test"
