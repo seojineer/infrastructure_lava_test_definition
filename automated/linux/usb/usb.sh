@@ -66,6 +66,6 @@ test_usb_storage_recognized_mounted() {
 
 # Test run.
 create_out_dir "${OUTPUT}"
-#test_check_cores_enabled
+test_usb_host_enabled
 test_usb_host_mouse
 test_usb_storage_recognized_mounted
