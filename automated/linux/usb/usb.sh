@@ -27,7 +27,7 @@ done
 test_usb_host_enabled() {
     info_msg "Running Checking USB Host is Enabled Test..."
 
-    cd /sys/devices/platform/0x17200000.usb/
+    cd /sys/devices/platform/17200000.usb/
     ls | tee "$LOGFILE_host"
     if [ -n "$(sed -n '/id/p' $LOGFILE_host)" ] && \
        [ -n "$(sed -n '/b_sess/p' $LOGFILE_host)" ]; then
