@@ -4,6 +4,7 @@ metadata:
     description: "This test checks if Ethernet is up and prints IP address."
     maintainer:
         - naresh.kamboju@linaro.org
+        - seoji@coasia.com
     os:
         - debian
         - ubuntu
@@ -25,13 +26,16 @@ metadata:
         - mustang
         - moonshot
         - thunderX
+        - mib3oi-gp
 
 params:
     SKIP_INSTALL: "False"
     INTERFACE: "eth0"
+    PING_ADDR: "192.168.1.5"
+    MYTEST: "false"
 
 run:
     steps:
         - cd automated/linux/ethernet
-        - ./ethernet.sh -s "${SKIP_INSTALL}" -i "${INTERFACE}"
+        - ./ethernet.sh -s "${SKIP_INSTALL}" -i "${INTERFACE}" -p "${PING_ADDR}" -m "${MYTEST}"
         - ../../utils/send-to-lava.sh ./output/result.txt
