@@ -6,6 +6,7 @@ OUTPUT="$(pwd)/output"
 RESULT_FILE="${OUTPUT}/result.txt"
 export RESULT_FILE
 LOGFILE_regulator="${OUTPUT}/pmic-regulator-stdout.txt"
+LOGFILE_rtc_temp="${OUTPUT}/pmic-rtc-temp-stdout.txt"
 LOGFILE_rtc="${OUTPUT}/pmic-rtc-stdout.txt"
 
 usage() {
@@ -55,8 +56,8 @@ test_rtc() {
     info_msg "Running Check RTC driver working Test..."
 
     echo +3 > /sys/class/rtc/rtc0/wakealarm; sleep 5
-    dmesg | grep s2vps01-rtc | tee "$LOGFILE_rtc"
-    tail -n 8 "$LOGFILE_rtc" | tee "$LOGFILE_rtc"
+    dmesg | grep s2vps01-rtc | tee "$LOGFILE_rtc_temp"
+    tail -n 7 "$LOGFILE_rtc_temp" | tee "$LOGFILE_rtc"
 
     if [ -n "$(sed -n '/s2m_rtc_alarm_irq/p' $LOGFILE_rtc)" ]; then
         report_pass "rtc-driver-working-test"
