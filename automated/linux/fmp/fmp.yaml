@@ -3,8 +3,7 @@ metadata:
     name: fmp-tests-basic
     description: "Run basic fmp tests."
     maintainer:
-        - milosz.wasilewski@linaro.org
-        - chase.qi@linaro.org
+        - seoji@coasia.com
     os:
         - debian
         - ubuntu
@@ -14,16 +13,7 @@ metadata:
     scope:
         - functional
     devices:
-        - panda
-        - panda-es
-        - juno
-        - hi6220-hikey
-        - apq8016-sbc
-        - mustang
-        - moonshot
-        - thunderX
-        - d03
-        - d05
+        - mib3oi-gp
 
 run:
     steps:

@@ -5,8 +5,8 @@
 OUTPUT="$(pwd)/output"
 RESULT_FILE="${OUTPUT}/result.txt"
 export RESULT_FILE
-TESTS="ls -all /sys/devices/platform | grep fmp, dmesg | grep fmp"
-echo $TEMP
+LOGFILE_fmp1="${OUTPUT}/fmp1-stdout.txt"
+LOGFILE_fmp2="${OUTPUT}/fmp2-stdout.txt"
 
 usage() {
     echo "Usage: $0" 1>&2
@@ -19,20 +19,31 @@ while getopts "h" o; do
   esac
 done
 
-run() {
-    # shellcheck disable=SC2039
-    local test="$1"
-    test_case_id="$(echo "${test}" | awk '{print $1}')"
-    echo
-    info_msg "Running ${test_case_id} test..."
-    eval "${test}"
-    check_return "${test_case_id}"
+test_fmp_driver_probe1() {
+    info_msg "Running FMP driver Probe Test1..."
+
+    ls -all /sys/devices/platform | grep fmp | tee $LOGFILE_fmp1
+
+    if [ -n "$(sed -n '/fmp/p' $LOGFILE_fmp1)" ]; then
+        report_pass "check-fmp-driver-probe-test1"
+    else
+        report_fail "check-fmp-driver-probe-test1"
+    fi
+}
+
+test_fmp_driver_probe2() {
+    info_msg "Running FMP driver Probe Test2..."
+
+    dmesg | grep fmp | tee $LOGFILE_fmp2
+
+    if [ -n "$(sed -n '/Exynos FMP driver is initialized/p' $LOGFILE_fmp2)" ]; then
+        report_pass "check-fmp-driver-probe-test2"
+    else
+        report_fail "check-fmp-driver-probe-test2"
+    fi
 }
 
 # Test run.
 create_out_dir "${OUTPUT}"
-for test in "ls -all /sys/devices/platform | grep fmp" "dmesg | grep fmp"; do
-    test_cmd="$test"
-    run "${test_cmd}"
-    test="$(echo "$test" | sed -r "s#${test_cmd},? *##")"
-done
+test_fmp_driver_probe1
+test_fmp_driver_probe2
