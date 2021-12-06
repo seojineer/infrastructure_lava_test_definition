@@ -77,7 +77,7 @@ test_ethernet_ping_test() {
 
     ifconfig $INTERFACE up; ifconfig $INTERFACE 192.168.1.1 netmask 255.255.255.0
 
-    ping $PING_ADDR | tee $LOGFILE_ping &
+    ping $PING_ADDR > $LOGFILE_ping &
     sleep 3
     kill $!
 
