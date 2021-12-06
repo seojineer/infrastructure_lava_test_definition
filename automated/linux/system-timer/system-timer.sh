@@ -22,12 +22,8 @@ done
 
 test_system_timer() {
     info_msg "Running System Timer Test..."
-    dmesg | tee "$LOGFILE" &
-    t=$!
-    sleep 2
-    kill $t
+    dmesg > "$LOGFILE"
 
-    sleep 2
     declare -a array
     cnt=0
     while read -r line; do {
