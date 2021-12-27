@@ -56,11 +56,11 @@ test_usb_storage_recognized_mounted() {
     /home/root/host.sh
     lsusb | tee -a "$LOGFILE_storage"
 
-    if [ -n "$(sed -n "/STORAGE_DEVICE_NAME/p" $LOGFILE_storage)" ]; then
+    if [ -n "$(sed -n "/${STORAGE_DEVICE_NAME}/p" $LOGFILE_storage)" ]; then
         report_pass "verify-usb-storage-recognized-test"
     else
         warn_msg "DEVICE '$STORAGE_DEVICE_NAME' not found."
-        report_pass "verify-usb-storage-recognized-test"
+        report_fail "verify-usb-storage-recognized-test"
     fi
 }
 
